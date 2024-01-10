@@ -3,9 +3,9 @@ import React from "react";
 export default function Navbar() {
   return (
     <div>
-      <div className="fixed bottom-0 left-0 w-full">
+      <div className="fixed bottom-0 left-0 w-full z-10">
         <div className="w-full max-w-md mx-auto">
-          <div className="px-7 bg-default-100 backdrop-blur-sm">
+          <div className="px-7 bg-default-50/80 backdrop-blur-md">
             <div className="flex">
               <div className="flex-1 group">
                 <a
