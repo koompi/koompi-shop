@@ -1,45 +1,69 @@
-import ProductCard from "../components/Card";
+import { useEffect, useState } from "react";
 
-const products = [
-  {
-    title: "KOOMPI Ministation",
-    sold: 230,
-    price: 369,
-    image: "https://koompi.com/images/ministation.png",
-    link: "/koompi/ministation",
+import ItemCard from "../components/ItemCard";
+import axios from "axios";
+
+type Product = {
+  id: string;
+  title: string;
+  price: number;
+  thumbnail: string;
+  previews: string[];
+};
+
+const data = JSON.stringify({
+  query: `query($filter: OrderBy) {
+  storeProducts(filter: $filter) {
+    id
+    title
+    price
+    thumbnail
+    previews
+  }
+}`,
+  variables: {},
+});
+
+const config = {
+  method: "post",
+  maxBodyLength: Infinity,
+  url: "https://backend.riverbase.org/graphql/public?store_id=65977008063b32aaf14813c2",
+  headers: {
+    "Content-Type": "application/json",
   },
-  {
-    title: "KOOMPI Mini",
-    sold: 120,
-    price: 300,
-    image: "https://koompi.com/images/contentserver.jpg",
-    link: "/koompi/mini",
-  },
-  {
-    title: "KOOMPI Monitor",
-    sold: 130,
-    price: 150,
-    image: "https://koompi.com/images/monitor.png",
-    link: "/koompi/monitor",
-  },
-];
+  data: data,
+};
 
 export default function Index() {
+  const [data, setData] = useState<Product[]>([]);
+
+  useEffect(() => {
+    axios
+      .request(config)
+      .then((response) => {
+        setData(response.data.data.storeProducts);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  console.log("data", data);
+
   return (
     <>
-      <h2 className="py-5 font-black text-2xl text-center">Our Products</h2>
-      <div className="flex flex-col gap-3">
-        {products.map((p) => {
-          return (
-            <ProductCard
-              title={p.title}
-              sold={p.sold}
-              price={p.price}
-              image={p.image}
-              link={p.link}
-            />
-          );
-        })}
+      {/* <MySwiper  /> */}
+      <h2 className="mb-3 font-bold text-xl mt-4">Our Products</h2>
+      <div className="grid grid-cols-2 gap-2">
+        {data.map((item) => (
+          <ItemCard
+            key={item.id}
+            title={item.title}
+            price={item.price}
+            image={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${item.thumbnail}`}
+            previews={item.previews}
+          />
+        ))}
       </div>
     </>
   );
