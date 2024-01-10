@@ -2,7 +2,7 @@ const { Telegraf, Scenes } = require("telegraf");
 
 const { message } = require("telegraf/filters");
 
-const bot = new Telegraf("6794288470:AAHRGGfSp3iDq65QOxwhUR1zkfGAGWpog_8");
+const bot = new Telegraf();
 bot.launch();
 
 bot.command("inline", (ctx) => {
