@@ -17,8 +17,8 @@ interface CartContextProps {
 
 export const CartContext = createContext<CartContextProps>({
   cartItems: [],
-  addToCart: (item: CartItem) => {},
-  removeFromCart: (item: CartItem) => {},
+  addToCart: () => {},
+  removeFromCart: () => {},
   clearCart: () => {},
   getCartTotal: () => 0,
 });

@@ -6,7 +6,7 @@ import { CartContext } from "../../context/CartContext";
 import { MainButton } from "@twa-dev/sdk/react";
 import { Pagination } from "swiper/modules";
 import { ProductType } from "../../types/product";
-import WebApp from "@twa-dev/sdk";
+// import WebApp from "@twa-dev/sdk";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
