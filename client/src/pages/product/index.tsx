@@ -86,7 +86,7 @@ export default function ProductDetail() {
 
   return (
     <>
-      <div className="h-30 relative overflow-hidden">
+      <div className="relative overflow-hidden">
         <Swiper
           pagination={{
             dynamicBullets: true,
@@ -123,10 +123,10 @@ export default function ProductDetail() {
         </div>
 
         <h2 className="text-lg font-semibold mt-8">Description</h2>
-        <p className="text-base opacity-50 mb-16">{data.desc}</p>
+        <p className="text-base opacity-50">{data.desc}</p>
       </div>
 
-      <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
+      {/* <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
         <div className="grid grid-cols-3 justify-between items-center gap-10">
           <div className="text-2xl font-black col-span-1">
             ${parseInt(data.price).toLocaleString()}
@@ -136,10 +136,10 @@ export default function ProductDetail() {
             Add to cart
           </Button>
         </div>
-      </div>
+      </div> */}
 
       <MainButton
-        text={`Pay Now ${data.price}`}
+        text={`Pay Now  ${parseInt(data.price).toLocaleString()}`}
         onClick={() => {
           WebApp.showAlert("Pay success");
         }}

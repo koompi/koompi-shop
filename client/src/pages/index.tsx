@@ -50,7 +50,7 @@ export default function Index() {
     <>
       {/* <MySwiper  /> */}
       <h2 className="mb-3 font-bold text-xl mt-4">Our Products</h2>
-      <div className="grid grid-cols-1 gap-2">
+      <div className="grid grid-cols-2 gap-2">
         {data.map((item) => (
           <Link to={`/product/${item.slug}`} key={item.id}>
             <ItemCard
