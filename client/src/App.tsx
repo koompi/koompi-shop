@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 
 import Index from "./pages";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import SinglePage from "./pages/product";
 
 export default function App() {
