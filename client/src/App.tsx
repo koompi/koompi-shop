@@ -21,7 +21,7 @@ export default function App() {
     <>
       <Navbar />
 
-      <div className="px-2 mb-16">
+      <div className="px-2">
         <Routes>
           <Route path="/" Component={Index} />
           <Route path="/checkout" Component={Checkout} />
