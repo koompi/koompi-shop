@@ -218,7 +218,7 @@ export default function ProductDetail() {
       </div>
       {foundItem && foundItem.quantity > 0 && (
         <MainButton
-          color="#2ed573"
+          color="#0070f0"
           text="VIEW ORDER"
           onClick={() => {
             // WebApp.showAlert("Pay success");

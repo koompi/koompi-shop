@@ -1,5 +1,6 @@
 import { CartContext } from "../context/CartContext";
 import { MainButton } from "@twa-dev/sdk/react";
+import WebApp from "@twa-dev/sdk";
 import { useContext } from "react";
 
 export default function Checkout() {
@@ -88,10 +89,10 @@ export default function Checkout() {
 
       {cartItems.length > 0 && (
         <MainButton
-          color="#2ed573"
+          color="#0070f0"
           text={`Pay  $${getCartTotal() * 0.9}`}
           onClick={() => {
-            // WebApp.showAlert("Pay success");
+            WebApp.showAlert("Pay success");
           }}
         />
       )}
