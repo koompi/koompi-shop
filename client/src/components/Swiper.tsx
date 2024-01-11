@@ -1,6 +1,3 @@
-import "swiper/css";
-import "swiper/css/pagination";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Image } from "@nextui-org/react";

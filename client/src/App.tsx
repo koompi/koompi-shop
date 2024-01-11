@@ -1,3 +1,6 @@
+import "swiper/css";
+import "swiper/css/pagination";
+
 import { Route, Routes } from "react-router-dom";
 
 import Index from "./pages";
