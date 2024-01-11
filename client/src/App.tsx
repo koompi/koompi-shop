@@ -8,6 +8,14 @@ import Navbar from "./components/Navbar";
 import SinglePage from "./pages/product";
 
 export default function App() {
+  // const sampleItem = {
+  //   id: 1,
+  //   name: "Sample Item",
+  //   price: 19.99,
+  // };
+
+  // const { cartItems, addToCart } = useContext(CartContext);
+
   return (
     <>
       <Navbar />
@@ -15,6 +23,7 @@ export default function App() {
       <div className="px-2 mb-16">
         <Routes>
           <Route path="/" Component={Index} />
+          <Route path="/product/cart" Component={SinglePage} />
           <Route path="/product/:id" Component={SinglePage} />
         </Routes>
       </div>

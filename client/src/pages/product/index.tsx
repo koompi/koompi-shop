@@ -1,7 +1,8 @@
-import { Image, Spinner } from "@nextui-org/react";
+import { Button, Image, Spinner } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
+import { CartContext } from "../../context/CartContext";
 import { MainButton } from "@twa-dev/sdk/react";
 import { Pagination } from "swiper/modules";
 import { ProductType } from "../../types/product";
@@ -12,7 +13,7 @@ import { useParams } from "react-router-dom";
 export default function ProductDetail() {
   const params = useParams();
 
-  console.log("params.id", params.id);
+  const { addToCart, getCartTotal } = useContext(CartContext);
 
   const [data, setData] = useState<ProductType | null>();
 
@@ -126,22 +127,38 @@ export default function ProductDetail() {
         <p className="text-base opacity-50">{data.desc}</p>
       </div>
 
-      {/* <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
+      <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
         <div className="grid grid-cols-3 justify-between items-center gap-10">
           <div className="text-2xl font-black col-span-1">
             ${parseInt(data.price).toLocaleString()}
           </div>
 
-          <Button className="w-full col-span-2" radius="full" color="primary">
+          <Button
+            onClick={() =>
+              addToCart({
+                id: data.id,
+                name: data.title,
+                price: parseFloat(data.price),
+              })
+            }
+            className="w-full col-span-2"
+            radius="full"
+            color="primary"
+          >
             Add to cart
           </Button>
         </div>
-      </div> */}
+      </div>
 
       <MainButton
-        text={`Pay Now  ${parseInt(data.price).toLocaleString()}`}
+        text={`Pay Now  ${getCartTotal().toLocaleString()}`}
         onClick={() => {
-          WebApp.showAlert("Pay success");
+          // WebApp.showAlert("Pay success");
+          addToCart({
+            id: data.id,
+            name: data.title,
+            price: parseFloat(data.price),
+          });
         }}
       />
     </>
