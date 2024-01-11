@@ -1,4 +1,4 @@
-import { Button, Image, Spinner } from "@nextui-org/react";
+import { Image, Spinner } from "@nextui-org/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useState } from "react";
 
