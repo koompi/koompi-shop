@@ -18,10 +18,12 @@ export default function Checkout() {
                 alt={item.name}
                 className="rounded-md w-16 h-16"
               />
-              <div className="flex gap-3 justify-center flex-col">
+              <div className="flex gap-1 justify-center flex-col">
                 <h1 className="text-md font-bold">{item.name}</h1>
                 <div className="flex gap-2 justify-between">
-                  <p className="text-gray-600">${item.price}</p>
+                  <p className="text-gray-600 font-bold">
+                    ${item.price.toLocaleString()}
+                  </p>
                   <div className="flex gap-4">
                     <button
                       className="bg-slate-200 h-6 w-6 rounded-full"
@@ -75,7 +77,7 @@ export default function Checkout() {
             <div className="text-md flex justify-between gap-2">
               <div className="opacity-50">Total:</div>
               <div>
-                <b>${getCartTotal() * 0.9}</b>
+                <b>${(getCartTotal() * 0.9).toLocaleString()}</b>
               </div>
             </div>
           </div>
@@ -87,7 +89,7 @@ export default function Checkout() {
       {cartItems.length > 0 && (
         <MainButton
           color="#2ed573"
-          text={`Pay  ${getCartTotal()?.toLocaleString()}`}
+          text={`Pay  $${getCartTotal() * 0.9}`}
           onClick={() => {
             // WebApp.showAlert("Pay success");
           }}

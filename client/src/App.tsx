@@ -6,7 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import Checkout from "./pages/checkout";
 import Index from "./pages";
 import Navbar from "./components/Navbar";
-import SinglePage from "./pages/product/ProductDetail";
+import SinglePage from "./pages/product";
 
 export default function App() {
   // const sampleItem = {

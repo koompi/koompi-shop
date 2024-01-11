@@ -14,8 +14,7 @@ export default function ProductDetail() {
   const params = useParams();
   const navigate = useNavigate();
 
-  const { addToCart, getCartTotal, removeFromCart, cartItems } =
-    useContext(CartContext);
+  const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
 
   const [data, setData] = useState<ProductType | null>();
 
@@ -91,6 +90,8 @@ export default function ProductDetail() {
     );
   }
 
+  const foundItem = cartItems?.find((item) => item.id === data?.id);
+
   return (
     <>
       <div className="relative overflow-hidden">
@@ -132,7 +133,6 @@ export default function ProductDetail() {
         <h2 className="text-lg font-semibold mt-8">Description</h2>
         <p className="text-base opacity-50">{data?.desc}</p>
       </div>
-
       <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
         <div className="grid grid-cols-5 justify-between items-center gap-10">
           <div className="col-span-2">
@@ -143,7 +143,7 @@ export default function ProductDetail() {
           </div>
 
           <div className="flex gap-4 justify-between items-center col-span-3">
-            {cartItems.length > 0 ? (
+            {foundItem && foundItem.quantity > 0 ? (
               <>
                 <Button
                   onClick={() =>
@@ -216,11 +216,10 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
-
-      {cartItems.length > 0 && (
+      {foundItem && foundItem.quantity > 0 && (
         <MainButton
           color="#2ed573"
-          text={`VIEW ORDER  ${getCartTotal()?.toLocaleString()}`}
+          text={`VIEW ORDER  ${foundItem.quantity * foundItem.price}`}
           onClick={() => {
             // WebApp.showAlert("Pay success");
             navigate("/checkout");
