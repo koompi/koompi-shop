@@ -219,7 +219,7 @@ export default function ProductDetail() {
       {foundItem && foundItem.quantity > 0 && (
         <MainButton
           color="#2ed573"
-          text={`VIEW ORDER  ${foundItem.quantity * foundItem.price}`}
+          text="VIEW ORDER"
           onClick={() => {
             // WebApp.showAlert("Pay success");
             navigate("/checkout");
