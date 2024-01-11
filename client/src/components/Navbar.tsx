@@ -1,5 +1,4 @@
-import React from "react";
-
+// Navbar Components
 export default function Navbar() {
   return (
     <div>
