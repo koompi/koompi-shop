@@ -1,12 +1,17 @@
+import { Button } from "@nextui-org/react";
+import { CartContext } from "../context/CartContext";
 import MySwiper from "./Swiper";
 import { ProductType } from "../types/product";
+import { useContext } from "react";
 
 export default function ItemCard({
+  id,
   title,
   thumbnail,
   price,
   previews,
 }: ProductType) {
+  const { addToCart } = useContext(CartContext);
   return (
     <div className="bg-white rounded-lg overflow-hidden relative p-2 ">
       {previews.length > 0 ? (
@@ -25,6 +30,24 @@ export default function ItemCard({
           ${parseInt(price).toLocaleString()}
         </div>
       </div>
+
+      <Button
+        onClick={(e) => {
+          e.stopPropagation();
+          addToCart({
+            id,
+            thumbnail: thumbnail,
+            name: title,
+            price: parseFloat(price),
+          });
+        }}
+        size="sm"
+        className="w-full"
+        radius="full"
+        color="primary"
+      >
+        Add to Cart
+      </Button>
     </div>
   );
 }

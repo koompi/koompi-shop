@@ -8,7 +8,7 @@ export default function Navbar() {
   const { cartItems } = useContext(CartContext);
   return (
     <div>
-      <div className="sticky top-0 w-full z-10">
+      <div className="fixed bottom-0 w-full z-10">
         <div className="w-full max-w-md mx-auto">
           <div className="bg-default-50/90 backdrop-blur-md px-3 border border-b mb-4">
             <div className="flex items-center justify-between py-3">
