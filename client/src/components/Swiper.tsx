@@ -11,8 +11,6 @@ type Prop = {
 };
 
 export default function MySwiper({ images }: Prop) {
-  console.log("images", images);
-
   return (
     <>
       <Swiper
@@ -25,8 +23,8 @@ export default function MySwiper({ images }: Prop) {
           return (
             <SwiperSlide>
               <Image
-                radius="none"
-                className="w-screen h-[180px] object-cover"
+                radius="md"
+                className="object-cover overflow-hidden"
                 src={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${img}`}
               />
             </SwiperSlide>

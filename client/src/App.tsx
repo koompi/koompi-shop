@@ -7,7 +7,7 @@ import SinglePage from "./pages/product";
 export default function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <div className="px-2 mb-16">
         <Routes>

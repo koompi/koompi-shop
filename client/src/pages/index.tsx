@@ -1,15 +1,9 @@
 import { useEffect, useState } from "react";
 
 import ItemCard from "../components/ItemCard";
+import { Link } from "react-router-dom";
+import { ProductType } from "../types/product";
 import axios from "axios";
-
-type Product = {
-  id: string;
-  title: string;
-  price: number;
-  thumbnail: string;
-  previews: string[];
-};
 
 const data = JSON.stringify({
   query: `query($filter: OrderBy) {
@@ -19,6 +13,8 @@ const data = JSON.stringify({
     price
     thumbnail
     previews
+    slug
+    desc
   }
 }`,
   variables: {},
@@ -35,7 +31,7 @@ const config = {
 };
 
 export default function Index() {
-  const [data, setData] = useState<Product[]>([]);
+  const [data, setData] = useState<ProductType[]>([]);
 
   useEffect(() => {
     axios
@@ -54,15 +50,17 @@ export default function Index() {
     <>
       {/* <MySwiper  /> */}
       <h2 className="mb-3 font-bold text-xl mt-4">Our Products</h2>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2">
         {data.map((item) => (
-          <ItemCard
-            key={item.id}
-            title={item.title}
-            price={item.price}
-            image={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${item.thumbnail}`}
-            previews={item.previews}
-          />
+          <Link to={`/product/${item.slug}`} key={item.id}>
+            <ItemCard
+              title={item.title}
+              price={item.price}
+              thumbnail={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${item.thumbnail}`}
+              previews={item.previews}
+              desc={item.desc}
+            />
+          </Link>
         ))}
       </div>
     </>
