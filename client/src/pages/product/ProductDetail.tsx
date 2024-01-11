@@ -7,7 +7,6 @@ import { CartContext } from "../../context/CartContext";
 import { MainButton } from "@twa-dev/sdk/react";
 import { Pagination } from "swiper/modules";
 import { ProductType } from "../../types/product";
-// import WebApp from "@twa-dev/sdk";
 import axios from "axios";
 
 export default function ProductDetail() {
@@ -22,7 +21,6 @@ export default function ProductDetail() {
   // useEffect(() => {
   //   WebApp.op
   // })
-
   let queryData = JSON.stringify({
     query: `query($slug: String!) {
     storeProduct(slug: $slug) {
@@ -81,7 +79,6 @@ export default function ProductDetail() {
   }, []);
 
   // console.log("data", data);
-
   if (!data) {
     return (
       <div className="flex flex-col justify-center items-center mt-10">

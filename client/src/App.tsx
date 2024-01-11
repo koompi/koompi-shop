@@ -3,9 +3,10 @@ import "swiper/css/pagination";
 
 import { Route, Routes } from "react-router-dom";
 
+import Checkout from "./pages/checkout";
 import Index from "./pages";
 import Navbar from "./components/Navbar";
-import SinglePage from "./pages/product";
+import SinglePage from "./pages/product/ProductDetail";
 
 export default function App() {
   // const sampleItem = {
@@ -23,7 +24,7 @@ export default function App() {
       <div className="px-2 mb-16">
         <Routes>
           <Route path="/" Component={Index} />
-          <Route path="/product/cart" Component={SinglePage} />
+          <Route path="/checkout" Component={Checkout} />
           <Route path="/product/:id" Component={SinglePage} />
         </Routes>
       </div>
