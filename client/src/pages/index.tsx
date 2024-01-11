@@ -1,9 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import ItemCard from "../components/ItemCard";
 import { ProductType } from "../types/product";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const data = JSON.stringify({
   query: `query($filter: OrderBy) {
