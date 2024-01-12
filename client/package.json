@@ -12,6 +12,7 @@
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "@twa-dev/sdk": "^6.9.2",
+    "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.5",
     "framer-motion": "^10.17.9",
     "react": "^18.2.0",

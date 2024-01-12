@@ -4,8 +4,8 @@ import "swiper/css/pagination";
 import { Route, Routes } from "react-router-dom";
 
 import Checkout from "./pages/checkout";
-import Index from "./pages";
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Layout from "./components/Layout";
 import SinglePage from "./pages/product";
 
 export default function App() {
@@ -18,16 +18,12 @@ export default function App() {
   // const { cartItems, addToCart } = useContext(CartContext);
 
   return (
-    <>
-      <Navbar />
-
-      <div className="px-2">
-        <Routes>
-          <Route path="/" Component={Index} />
-          <Route path="/checkout" Component={Checkout} />
-          <Route path="/product/:id" Component={SinglePage} />
-        </Routes>
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/product/:id" element={<SinglePage />} />
+      </Route>
+    </Routes>
   );
 }

@@ -30,7 +30,7 @@ const config = {
   data: data,
 };
 
-export default function Index() {
+export default function Home() {
   const [data, setData] = useState<ProductType[]>([]);
   const navigate = useNavigate();
 

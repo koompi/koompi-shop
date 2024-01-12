@@ -93,23 +93,30 @@ export default function ProductDetail() {
   const foundItem = cartItems?.find((item) => item.id === data?.id);
 
   return (
-    <>
-      <div className="relative overflow-hidden">
+    <div className="relative">
+      <div className="min-h-[calc(100dvh-152px)] w-full pb-6">
         <Swiper
           pagination={{
             dynamicBullets: true,
           }}
           modules={[Pagination]}
-          className="scale-110"
+          // className="scale-110"
         >
-          {data?.previews?.map((img) => {
+          {data?.previews?.map((img, index) => {
             return (
-              <SwiperSlide>
-                <Image
-                  radius="md"
-                  className="object-cover overflow-hidden h-[240px] w-screen"
-                  src={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${img}`}
-                />
+              <SwiperSlide key={index}>
+                <div
+                  className="bg-center bg-cover"
+                  style={{
+                    backgroundImage: `url("https://ipfs.backend.riverbase.org/api/ipfs?hash=${img}")`,
+                  }}
+                >
+                  <Image
+                    radius="md"
+                    className="object-contain h-[240px] w-screen backdrop-blur-sm"
+                    src={`https://ipfs.backend.riverbase.org/api/ipfs?hash=${img}`}
+                  />
+                </div>
               </SwiperSlide>
             );
           })}
@@ -133,7 +140,7 @@ export default function ProductDetail() {
         <h2 className="text-lg font-semibold mt-8">Description</h2>
         <p className="text-base opacity-50">{data?.desc}</p>
       </div>
-      <div className="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-lg p-3">
+      <div className="sticky bottom-16 w-full bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg">
         <div className="grid grid-cols-5 justify-between items-center gap-10">
           <div className="col-span-2">
             <small>Price:</small>
@@ -142,7 +149,7 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <div className="flex gap-4 justify-between items-center col-span-3">
+          <div className="flex h-auto gap-4 justify-between items-center col-span-3">
             {foundItem && foundItem.quantity > 0 ? (
               <>
                 <Button
@@ -206,7 +213,7 @@ export default function ProductDetail() {
                     price: parseFloat(data?.price),
                   })
                 }
-                className="w-screen"
+                className="w-full"
                 radius="full"
                 color="primary"
               >
@@ -226,6 +233,6 @@ export default function ProductDetail() {
           }}
         />
       )}
-    </>
+    </div>
   );
 }
