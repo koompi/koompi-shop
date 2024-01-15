@@ -9,10 +9,12 @@ import { Pagination } from "swiper/modules";
 import { ProductType } from "../../types/product";
 // import WebApp from "@twa-dev/sdk";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function ProductDetail() {
 	const params = useParams();
 	const navigate = useNavigate();
+	const [pTitle, setpTitle] = useState<string>("");
 
 	const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
 
@@ -140,11 +142,11 @@ export default function ProductDetail() {
 				<h2 className="text-lg font-semibold mt-8">Description</h2>
 				<p className="text-base opacity-50">{data?.desc}</p>
 			</div>
-			<div className="sticky bottom-16 w-full bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg">
+			<div className="fixed left-0 bottom-0 w-screen bg-white/80 backdrop-blur-lg p-4 rounded-lg shadow-lg">
 				<div className="grid grid-cols-5 justify-between items-center gap-10">
 					<div className="col-span-2">
 						<small>Price:</small>
-						<div className="text-2xl font-black ">
+						<div className="text-xl font-black ">
 							${parseInt(data?.price).toLocaleString()}
 						</div>
 					</div>
@@ -205,14 +207,20 @@ export default function ProductDetail() {
 							</>
 						) : (
 							<Button
-								onClick={() =>
+								onClick={() => {
 									addToCart({
 										id: data?.id,
 										thumbnail: data?.thumbnail,
 										name: data?.title,
 										price: parseFloat(data?.price),
-									})
-								}
+									});
+
+									setpTitle(data.title);
+									setTimeout(() => {
+										setpTitle("");
+									}, 500);
+									toast.success("Added to cart");
+								}}
 								className="w-full"
 								radius="full"
 								color="primary"

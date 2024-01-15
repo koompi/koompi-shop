@@ -106,7 +106,7 @@ export default function Checkout() {
 					}}
 				/>
 			)}
-			<BackButton onClick={() => window.location.replace("/")} />
+			<BackButton onClick={() => window.history.back()} />
 		</>
 	);
 }
