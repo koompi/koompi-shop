@@ -8,11 +8,11 @@ export default function Checkout() {
 	const { cartItems, addToCart, removeFromCart, getCartTotal } =
 		useContext(CartContext);
 
-	useEffect(() => {
-		window.addEventListener("beforeunload", () =>
-			WebApp.showConfirm("Are you sure?")
-		);
-	});
+	// useEffect(() => {
+	// 	window.addEventListener("beforeunload", () =>
+	// 		WebApp.showConfirm("Are you sure?")
+	// 	);
+	// });
 
 	return (
 		<>
