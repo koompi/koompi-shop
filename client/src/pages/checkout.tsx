@@ -66,9 +66,9 @@ export default function Checkout() {
 					</div>
 				))}
 			</div>
-			<div className="bg-white  rounded-md shadow-sm p-3 mt-8">
+			<div>
 				{cartItems.length > 0 ? (
-					<div className="flex flex-col justify-between ">
+					<div className="flex flex-col justify-between bg-white  rounded-md shadow-sm p-3 mt-8">
 						<div className="text-md flex justify-between gap-2">
 							<div className="opacity-50">Subtotal:</div>
 							<div>
@@ -92,14 +92,16 @@ export default function Checkout() {
 						</div>
 					</div>
 				) : (
-					<h1 className="text-lg font-bold">Your cart is empty</h1>
+					<div className="text-lg text-center mt-10 opacity-50">
+						Your cart is empty
+					</div>
 				)}
 			</div>
 
 			{cartItems.length > 0 && (
 				<MainButton
 					color="#0070f0"
-					text={`Pay  $${getCartTotal() * 0.9}`}
+					text={`Pay  $${(getCartTotal() * 0.9).toLocaleString()}`}
 					onClick={() => {
 						WebApp.showAlert("Pay success");
 						// WebApp.showConfirm("Are you sure?");

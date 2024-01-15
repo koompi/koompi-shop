@@ -209,10 +209,10 @@ export default function ProductDetail() {
 							<Button
 								onClick={() => {
 									addToCart({
-										id: data?.id,
-										thumbnail: data?.thumbnail,
-										name: data?.title,
-										price: parseFloat(data?.price),
+										id: data.id,
+										thumbnail: `https://ipfs.backend.riverbase.org/api/ipfs?hash=${data.thumbnail}`,
+										name: data.title,
+										price: parseFloat(data.price),
 									});
 
 									setpTitle(data.title);

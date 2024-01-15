@@ -17,7 +17,7 @@ export default function ItemCard({
 	const [pTitle, setpTitle] = useState<string>("");
 
 	return (
-		<div className="bg-white rounded-lg overflow-hidden relative p-2">
+		<div className="bg-white rounded-lg overflow-hidden relative p-2 h-full">
 			{previews.length > 0 ? (
 				<MySwiper images={previews} />
 			) : (
