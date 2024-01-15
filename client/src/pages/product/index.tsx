@@ -224,6 +224,8 @@ export default function ProductDetail() {
 								className="w-full"
 								radius="full"
 								color="primary"
+								isLoading={pTitle === data.title}
+								isDisabled={pTitle === data.title}
 							>
 								Add to Cart
 							</Button>
