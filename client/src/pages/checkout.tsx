@@ -1,8 +1,8 @@
 import { BackButton, MainButton } from "@twa-dev/sdk/react";
-import { useContext, useEffect } from "react";
 
 import { CartContext } from "../context/CartContext";
 import WebApp from "@twa-dev/sdk";
+import { useContext } from "react";
 
 export default function Checkout() {
 	const { cartItems, addToCart, removeFromCart, getCartTotal } =
